@@ -14,9 +14,9 @@ cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 local_file = 'model.pt'
 
-if not os.path.isfile(local_file):
-    torch.hub.download_url_to_file('https://models.silero.ai/models/tts/ru/v3_1_ru.pt',
-                                   local_file)  
+#if not os.path.isfile(local_file):
+#    torch.hub.download_url_to_file('https://models.silero.ai/models/tts/ru/v3_1_ru.pt',
+#                                   local_file)  
 
 device = torch.device('cpu')
 torch.set_num_threads(1)
@@ -46,11 +46,17 @@ def synthesize():
         audio_bytes = wavefile.read()
 
     result = b64encode(audio_bytes).decode("utf-8")
+    os.remove(audio_paths)
 
     return {
         "response_code": 200,
-        "response": result
-    }
+         "response": [
+        {
+          "name": speaker,
+          "response_audio": result
+        }
+    ]
+   }
 
 
 if __name__ == "__main__":
