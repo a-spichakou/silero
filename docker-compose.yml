@@ -4,11 +4,11 @@ services:
   silero:
     restart: always
     container_name: silero
-    build:
-      context: .
-      dockerfile: Dockerfile
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
     #runtime: nvidia
-    image: silero:master
+    image: aspichakou/silero
     volumes:
       - .:/silero
     ports:
