@@ -2,14 +2,27 @@ version: '2.3'
 
 services:
   silero:
-    restart: always
+    #restart: always
     container_name: silero
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
     #runtime: nvidia
-    image: aspichakou/silero
-    volumes:
-      - .:/silero
+    #image: aspichakou/silero
+    #volumes:
+    #  - .:/silero
     ports:
       - 8899:8899
+
+  silero-gpu:
+    #restart: always
+    container_name: silero-gpu
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    runtime: nvidia
+    #image: aspichakou/silero-gpu
+    #volumes:
+    #  - .:/silero
+    ports:
+      - 8809:8899
