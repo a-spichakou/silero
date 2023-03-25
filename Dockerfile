@@ -22,4 +22,4 @@ RUN pip3 install numpy
 
 COPY app.py .
 
-CMD gunicorn --access-logfile - -w 4 --bind 0.0.0.0:8899 app:app --timeout 15000 
+CMD gunicorn --access-logfile - -w 1 --bind 0.0.0.0:8899 app:app --timeout 15000 
