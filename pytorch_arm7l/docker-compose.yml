@@ -1,0 +1,13 @@
+version: '2.3'
+
+services:
+  pytorch-arm7l:
+    container_name: pytorch-arm7l
+    image: pytorch-arm7l
+    build:
+      context: .
+      dockerfile: Dockerfile        
+    volumes:
+      - .:/work
+    ports:
+      - 8899:8899
