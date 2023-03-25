@@ -14,13 +14,11 @@ RUN mkdir silero
 RUN cd ./silero
 
 COPY requirements.txt .
+COPY model.pt .
 
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 RUN pip3 install numpy
-
-RUN wget -O v3_1_ru.pt https://models.silero.ai/models/tts/ru/v3_1_ru.pt
-RUN mv v3_1_ru.pt model.pt
 
 COPY app.py .
 
